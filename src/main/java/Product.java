@@ -9,6 +9,7 @@ public class Product {
         this.price=price;
     }
 
+    //what the ColVo means? amount? I suggest use english words, if you have issues with it use translator it's also ok
     public int getColVo() {
         return colVo;
     }

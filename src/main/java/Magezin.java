@@ -20,6 +20,8 @@ public class Magezin {
             }
         }
 
+        //please read about Magic Numbers anti-pattern
+        //when tomorrow the amount of the products with special price will change - we have to edit it only in one place
         while (A.getColVo() % 3 == 0 && A.getColVo()!=0 || C.getColVo() % 6 == 0 && C.getColVo() != 0){
             if (A.getColVo()%3==0 && A.getColVo() != 0){
                 result+=3f;
@@ -31,6 +33,8 @@ public class Magezin {
             }
         }
 
+        //you have to do it more human readable. First of all - group it into () following Math regulars
+        //and it will be nice to extract such calculation in private method with a meaningful name
         result+=A.getColVo() * A.getPrice() + B.getColVo() * B.getPrice() + C.getColVo() * C.getPrice() + D.getColVo() * D.getPrice();
 
         return result;

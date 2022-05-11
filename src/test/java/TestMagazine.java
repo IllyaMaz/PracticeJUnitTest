@@ -11,6 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;
 
+//please always delete unused imports
 public class TestMagazine {
 
     Magezin magezin = new Magezin();
@@ -45,6 +46,7 @@ public class TestMagazine {
     }
 
     @Test
+    //it's better to compare with expected value 1.25f in this case
     void testResultNotEqulsZero(){
         assertNotEquals(magezin.getTotalPrice("A"),0);
     }
