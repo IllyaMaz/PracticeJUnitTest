@@ -10,36 +10,40 @@ public class Magezin {
         String[] product = totalPrice.split("");
         for (String s:product) {
             if (s.equals("A")){
-                A.setColVo(A.getColVo()+1);
+                A.setAmount(A.getAmount()+1);
             } else if (s.equals("B")){
-                B.setColVo(B.getColVo()+1);
+                B.setAmount(B.getAmount()+1);
             } else if (s.equals("C")){
-                C.setColVo(C.getColVo()+1);
+                C.setAmount(C.getAmount()+1);
             } else if (s.equals("D")){
-                D.setColVo(D.getColVo()+1);
+                D.setAmount(D.getAmount()+1);
             }
         }
 
-        //please read about Magic Numbers anti-pattern
-        //when tomorrow the amount of the products with special price will change - we have to edit it only in one place
-        while (A.getColVo() % 3 == 0 && A.getColVo()!=0 || C.getColVo() % 6 == 0 && C.getColVo() != 0){
-            if (A.getColVo()%3==0 && A.getColVo() != 0){
+        int amountProductA = A.getAmount();
+        int amountProductC = C.getAmount();
+
+        while (amountProductA % 3 == 0 && amountProductA!=0 || amountProductC % 6 == 0 && amountProductC != 0){
+            if (amountProductA%3==0 && amountProductA != 0){
                 result+=3f;
-                A.setColVo(A.getColVo()-3);
+                amountProductA-=3;
+                A.setAmount(amountProductA);
             }
-            if (C.getColVo() % 6 == 0 && C.getColVo() !=0){
+            if (amountProductC % 6 == 0 && amountProductC !=0){
                 result+=5f;
-                C.setColVo(C.getColVo()-6);
+                amountProductC-=6;
+                C.setAmount(amountProductC);
             }
         }
 
-        //you have to do it more human readable. First of all - group it into () following Math regulars
-        //and it will be nice to extract such calculation in private method with a meaningful name
-        result+=A.getColVo() * A.getPrice() + B.getColVo() * B.getPrice() + C.getColVo() * C.getPrice() + D.getColVo() * D.getPrice();
-
-        return result;
+        return result+=sum();
     }
 
-
+    private float sum(){
+        return (A.getAmount() * A.getPrice())
+                + (B.getAmount() * B.getPrice())
+                + (C.getAmount() * C.getPrice())
+                + (D.getAmount() * D.getPrice());
+    }
 
 }
